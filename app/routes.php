@@ -17,7 +17,4 @@ Route::any('/', function()
 });
 
 
-Route::any('ola/{usuario?}', function($usuario = null)
-{
-	return View::make('ola')->with('usuario', $usuario);
-});
+Route::get('ola/{usuario?}', 'HomeController@ola');
