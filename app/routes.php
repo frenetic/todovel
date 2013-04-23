@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', function()
+Route::any('/', function()
 {
 	return View::make('hello');
+});
+
+
+Route::any('ola/{usuario?}', function($usuario = null)
+{
+	return View::make('ola')->with('usuario', $usuario);
 });
