@@ -16,8 +16,13 @@ class TaskController extends BaseController {
 		if ($validacao->fails()) {
 			return Redirect::to('task/add')->withErrors($validacao);
 		}
-		
-		//sucesso
-		return "sucesso";
+		//se a validação deu certo
+		else {
+			$task = new Task;
+			$task->titulo = Input::get('titulo');
+			$task->save();
+			
+			return View::make('add_task')->with('sucesso', TRUE);
+		}
 	}
 }

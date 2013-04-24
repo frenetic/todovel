@@ -13,6 +13,10 @@
                 </ul>
             @endif
             
+            @if ( isset($sucesso) )
+                <h3>FUNCIONOU!</h3>
+            @endif
+            
             {{ Form::open( array("action" => "TaskController@postAdd") ) }}
                 {{ Form::label('titulo', 'Tarefa a ser cumprima:') }}
                     {{ Form::text('titulo') }}
