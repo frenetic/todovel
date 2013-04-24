@@ -25,4 +25,8 @@ class TaskController extends BaseController {
 			return View::make('add_task')->with('sucesso', TRUE);
 		}
 	}
+	
+	public function listar() {
+		return View::make('list_tasks')->with('tasks', Task::all());
+	}
 }

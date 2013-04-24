@@ -20,6 +20,10 @@ Route::any('/', function()
 Route::get('ola/{usuario?}', 'HomeController@ola');
 
 
+/*    listing tasks    */
+Route::any('task', 'TaskController@listar');
+Route::any('tasks', 'TaskController@listar');
+
 /*    adding tasks routes    */
 Route::get('task/add', 'TaskController@getAdd');
 Route::post('task/add', 'TaskController@postAdd');
