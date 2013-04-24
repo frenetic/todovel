@@ -18,3 +18,8 @@ Route::any('/', function()
 
 
 Route::get('ola/{usuario?}', 'HomeController@ola');
+
+
+/*    adding tasks routes    */
+Route::get('task/add', 'TaskController@getAdd');
+Route::post('task/add', 'TaskController@postAdd');
