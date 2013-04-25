@@ -136,5 +136,8 @@
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
 
+    @section('custom_script')
+    @show
+
   </body>
 </html>
