@@ -12,7 +12,7 @@ class AddLists extends Migration {
 	public function up()
 	{
 		//creating lists table
-                Schema::create('lists', function($table) {
+                Schema::create('listas', function($table) {
                     $table->increments('id');
                     $table->string('titulo', 100); //coluna de titulo, varchar de 100 caracteres
                     
@@ -24,7 +24,7 @@ class AddLists extends Migration {
                 Schema::table('tasks', function($table) {
                     $table->integer('list_id')->unsigned()->nullable();
                     
-                    $table->foreign('list_id')->references('id')->on('lists')->onDelete('cascade')->onUpdate('cascade');
+                    $table->foreign('list_id')->references('id')->on('listas')->onDelete('cascade')->onUpdate('cascade');
                 });
 	}
 
@@ -41,7 +41,7 @@ class AddLists extends Migration {
                     $table->dropColumn('list_id');
                 });
                 
-		Schema::dropIfExists('lists'); //se a tabela existir, exclui
+		Schema::dropIfExists('listas'); //se a tabela existir, exclui
 	}
 
 }
