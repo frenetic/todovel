@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    {{ Html::style("assets/css/bootstrap.css")}}
+    
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -46,11 +47,13 @@
         margin-top: 28px;
       }
     </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    
+    {{ Html::style("assets/css/bootstrap-responsive.css")}}
+    
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
+      {{ Html::script("assets/js/html5shiv.js")}}
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -122,7 +125,13 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
+    
+    {{ Html::script("assets/js/jquery.js") }}
+    
+    <script src="{{ URL::to('/') }}/assets/js/bootstrap-transition.js"></script>
+    <script src="{{ Request::root() }}/assets/js/bootstrap-transition.js"></script>
+    
+    <!--<script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
     <script src="assets/js/bootstrap-modal.js"></script>
@@ -134,7 +143,7 @@
     <script src="assets/js/bootstrap-button.js"></script>
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>-->
 
     @section('custom_script')
     @show
