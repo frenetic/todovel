@@ -30,3 +30,9 @@ Route::post('task/add', 'TaskController@postAdd');
 
 /*    checking tasks    */
 Route::post('task/check', 'TaskController@check');
+
+
+
+/*    lists    */
+Route::get('list/create', 'ListController@getCreate');
+Route::post('list/create', 'ListController@postCreate');
