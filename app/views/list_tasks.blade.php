@@ -25,7 +25,8 @@
 
             $('li label input').on('change', function(){
                 var task_id = $(this).parent().data('task-id');
-                var li = $(this).parent().parent();
+                //var li = $(this).parent().parent();
+                var li = $(this).closest(".task");
 
                 //ajax post request
                 $.post(
