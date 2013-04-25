@@ -11,10 +11,10 @@
 |
 */
 
-Route::any('/', function()
-{
-	return View::make('hello');
-});
+Route::any('/', array("as" => "home",
+		      function() { return View::make('hello'); }
+		)
+);
 
 
 Route::get('ola/{usuario?}', 'HomeController@ola');
@@ -25,7 +25,7 @@ Route::any('task', 'TaskController@listar');
 Route::any('tasks', 'TaskController@listar');
 
 /*    adding tasks routes    */
-Route::get('task/add', 'TaskController@getAdd');
+Route::get('task/add', array("as" => "addTask", "uses" => 'TaskController@getAdd'));
 Route::post('task/add', 'TaskController@postAdd');
 
 /*    checking tasks    */
