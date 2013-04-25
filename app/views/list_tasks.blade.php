@@ -2,6 +2,13 @@
 
 @section('conteudo')
     
+    <p>
+        <a href="{{ URL::to('task/add') }}">Adicionar Task</a> <br />
+        {{ Html::link('task/add', 'Adicionar Task') }} <br />
+        <a href="{{ URL::action('TaskController@getAdd') }}">Adicionar Task</a> <br />
+        <a href="{{ URL::route('addTask') }}">Adicionar Task</a> <br />
+    </p>
+    
     <ul style="list-style: none;">
         @foreach ($tasks as $task)
             <li class="task">
