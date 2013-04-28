@@ -2,7 +2,7 @@
 
 class Lista extends Eloquent {
 
-    public funtion tasks() {
+    public function tasks() {
         return $this->hasMany('Task', 'list_id');
     }
 
