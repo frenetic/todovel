@@ -38,3 +38,4 @@ Route::get('list/create', 'ListController@getCreate');
 Route::post('list/create', 'ListController@postCreate');
 
 Route::get('list', 'ListController@listar');
+Route::get('list/{lista_id?}', 'ListController@listarTasks');

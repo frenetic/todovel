@@ -29,7 +29,15 @@ class ListController extends BaseController {
 	
 	
 	
-	public function listar(){
+	public function listar() {
 		return View::make('list_lists')->with('lists', Lista::all());
+	}
+	
+	
+	public function listarTasks($lista_id = 0) {
+		if ($lista_id == 0)
+			return $this->listar();
+		
+		return View::make('lista')->with('lista', Lista::findOrFail($lista_id));
 	}
 }
