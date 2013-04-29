@@ -26,4 +26,10 @@ class ListController extends BaseController {
 			return View::make('add_list')->with('sucesso', TRUE);
 		}
 	}
+	
+	
+	
+	public function listar(){
+		return View::make('list_lists')->with('lists', Lista::all());
+	}
 }
