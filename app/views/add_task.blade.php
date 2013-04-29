@@ -17,12 +17,12 @@
                 <h3>FUNCIONOU!</h3>
             @endif
             
-            {{ Form::open( array("action" => "TaskController@postAdd") ) }}
+            <form method="post" action="{{ URL::to('task/add') }}/{{ $lista_id }}">
                 {{ Form::label('titulo', 'Tarefa a ser cumprima:') }}
                     {{ Form::text('titulo') }}
                 
                 {{ Form::submit('OK') }}
-            {{ Form::close() }}
+            </form>
             
         </div>
     </div>

@@ -1,11 +1,18 @@
 <?php
 
 class TaskController extends BaseController {
-	public function getAdd() {
-		return View::make('add_task');
+	public function getAdd($lista_id) {
+		//verifica se a lista existe
+		Lista::findOrFail($lista_id);
+		
+		return View::make('add_task')->with('lista_id', $lista_id);
 	}
 	
-	public function postAdd() {
+	public function postAdd($lista_id) {
+		//verifica se a lista existe
+		Lista::findOrFail($lista_id);
+		
+		
 		//criando regras de validação
 		$regras = array('titulo' => 'required');
 		
@@ -14,15 +21,16 @@ class TaskController extends BaseController {
 		
 		//se a validação deu errado
 		if ($validacao->fails()) {
-			return Redirect::to('task/add')->withErrors($validacao);
+			return Redirect::to('task/add/' . $lista_id)->withErrors($validacao);
 		}
 		//se a validação deu certo
 		else {
 			$task = new Task;
 			$task->titulo = Input::get('titulo');
+			$task->list_id = $lista_id;
 			$task->save();
 			
-			return View::make('add_task')->with('sucesso', TRUE);
+			return View::make('add_task')->with('sucesso', TRUE)->with('lista_id', $lista_id);
 		}
 	}
 	

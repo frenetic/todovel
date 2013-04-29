@@ -25,8 +25,8 @@ Route::any('task', 'TaskController@listar');
 Route::any('tasks', 'TaskController@listar');
 
 /*    adding tasks routes    */
-Route::get('task/add', array("as" => "addTask", "uses" => 'TaskController@getAdd'));
-Route::post('task/add', 'TaskController@postAdd');
+Route::get('task/add/{lista_id}', 'TaskController@getAdd');
+Route::post('task/add/{lista_id}', 'TaskController@postAdd');
 
 /*    checking tasks    */
 Route::post('task/check', 'TaskController@check');
