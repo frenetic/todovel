@@ -39,3 +39,28 @@ Route::post('list/create', 'ListController@postCreate');
 
 Route::get('list', 'ListController@listar');
 Route::get('list/{lista_id?}', 'ListController@listarTasks');
+
+
+/*    login    */
+Route::get('login', function() {
+	return View::make('login');
+});
+
+Route::post('login', function() {
+	$regras = array("email" => "required|email",
+			"senha" => "required");
+	
+	$validacao = Validator::make(Input::all(), $regras);
+	
+	if ($validacao->fails()) {
+		return Redirect::to('login')->withErrors($validacao);
+	}
+	
+	//tenta logar o usuário
+	if (Auth::attempt( array('email' => Input::get('email'), 'password' => Input::get('senha') ) ) ) {
+		return Redirect::to('/');
+	}
+	else {
+		return Redirect::to('login')->withErrors('Usuário ou Senha Inválido');
+	}
+});
