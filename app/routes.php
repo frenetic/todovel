@@ -55,3 +55,10 @@ Route::post('login', array('before' => 'csrf', function() {
 		return Redirect::to('login')->withErrors('Usuário ou Senha Inválido');
 	}
 }));
+
+
+/*    cadastro de novos usuários    */
+Route::group(["before"=>'guest'], function() {
+	Route::get('cadastro', 'UserController@form');
+	Route::post('cadastro',  ['before' => 'csrf', 'uses' => 'UserController@cadastro']);
+});
