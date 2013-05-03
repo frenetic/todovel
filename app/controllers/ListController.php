@@ -21,6 +21,7 @@ class ListController extends BaseController {
 		else {
 			$list = new Lista;
 			$list->titulo = Input::get('titulo');
+			$list->user_id = Auth::user()->id;
 			$list->save();
 			
 			return View::make('add_list')->with('sucesso', TRUE);
@@ -28,9 +29,8 @@ class ListController extends BaseController {
 	}
 	
 	
-	
 	public function listar() {
-		return View::make('list_lists')->with('lists', Lista::all());
+		return View::make('list_lists')->with('lists', User::find(Auth::user()->id)->listas);
 	}
 	
 	
@@ -38,6 +38,6 @@ class ListController extends BaseController {
 		if ($lista_id == 0)
 			return $this->listar();
 		
-		return View::make('lista')->with('lista', Lista::findOrFail($lista_id));
+		return View::make('lista')->with('lista', User::find(Auth::user()->id)->listas()->where('id', '=', $lista_id)->first());
 	}
 }
