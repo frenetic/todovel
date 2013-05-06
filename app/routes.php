@@ -1,13 +1,7 @@
 <?php
 
 Route::group(array('before' => 'auth'), function()
-{
-	//home
-	Route::any('/', array("as" => "home",
-			      function() { return View::make('hello'); }
-			      )
-	);
-	
+{	
 	Route::get('ola/{usuario?}', 'HomeController@ola');
 	
 	/*    listing tasks    */
@@ -61,4 +55,21 @@ Route::post('login', array('before' => 'csrf', function() {
 Route::group(["before"=>'guest'], function() {
 	Route::get('cadastro', 'UserController@form');
 	Route::post('cadastro',  ['before' => 'csrf', 'uses' => 'UserController@cadastro']);
+});
+
+
+
+
+/*    página inicial    */
+Route::any('/', ["as" => "home",
+		 function() {
+			if (Auth::guest())
+				return View::make('hello');
+			
+			return Redirect::to('list');
+		}]
+);
+/*    about    */
+Route::any('about', function() {
+	return View::make('about');
 });
