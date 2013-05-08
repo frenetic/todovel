@@ -17,7 +17,7 @@
                 <h3>FUNCIONOU!</h3>
             @endif
             
-            {{ Form::open( array("action" => "list/create") ) }}
+            {{ Form::open( array("to" => "list/create") ) }}
                 {{ Form::label('titulo', 'Nova Lista:') }}
                     {{ Form::text('titulo') }}
                 
