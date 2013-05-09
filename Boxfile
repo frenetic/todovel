@@ -1,0 +1,27 @@
+web1: 
+  name: todovel
+  php_version: 5.3.10
+  php_display_errors: "32767"
+  php_extensions:
+    - mcrypt
+    - pdo_mysql
+    - zip
+    - apc
+    - mbstring
+  shared_writable_dirs:
+    - app/storage/cache
+    - app/storage/logs
+    - app/storage/meta
+    - app/storage/sessions
+    - app/storage/views
+  document_root: public
+  after_build: 
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-source"
+  before_deploy:
+    - "php artisan migrate"
+  after_depoly:
+    - "rm -f app/storage/cache/*"
+    - "rm -f app/storage/views/*"
+db1: 
+  name: todovel_db
+  type: mysql
